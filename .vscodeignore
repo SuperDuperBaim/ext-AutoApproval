@@ -1,0 +1,14 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+.eslintrc.json
+**/*.ts
+!out/**
+out/test/**
+node_modules/.bin/**
+node_modules/@types/**
+node_modules/typescript/**
+tsconfig.json
+**/*.map
+antigravity_safe_auto_approve_prd.md

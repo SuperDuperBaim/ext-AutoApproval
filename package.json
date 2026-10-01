@@ -1,0 +1,197 @@
+{
+  "name": "antigravity-safe-auto-approve",
+  "displayName": "Safe Auto Approve",
+  "description": "Safety-first auto approval engine for AI Agent — whitelists safe commands, ignores destructive ones.",
+  "version": "0.2.1",
+  "publisher": "AnandaIbrahim",
+  "author": {
+    "name": "Ananda Ibrahim"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "auto-approve",
+    "ai-agent",
+    "automation",
+    "safety"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "antigravityAutoApprove.enable",
+        "title": "Safe Auto Approve: Enable"
+      },
+      {
+        "command": "antigravityAutoApprove.disable",
+        "title": "Safe Auto Approve: Disable"
+      },
+      {
+        "command": "antigravityAutoApprove.showStatus",
+        "title": "Safe Auto Approve: Show Status"
+      },
+      {
+        "command": "antigravityAutoApprove.editWhitelist",
+        "title": "Safe Auto Approve: Edit Whitelist"
+      },
+      {
+        "command": "antigravityAutoApprove.editBlacklist",
+        "title": "Safe Auto Approve: Edit Blacklist"
+      }
+    ],
+    "configuration": {
+      "title": "Safe Auto Approve",
+      "properties": {
+        "antigravityAutoApprove.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the Safe Auto Approve extension."
+        },
+        "antigravityAutoApprove.mode": {
+          "type": "string",
+          "default": "Safe",
+          "enum": [
+            "Safe",
+            "Strict"
+          ],
+          "enumDescriptions": [
+            "Safe: Auto-approve commands that are in the whitelist. Ignore blacklisted and unknown commands.",
+            "Strict: Only approve commands that exactly match the whitelist. Reject everything else."
+          ],
+          "description": "Approval strategy mode."
+        },
+        "antigravityAutoApprove.defaultChoice": {
+          "type": "string",
+          "default": "Allow this time",
+          "enum": [
+            "Allow this time",
+            "Allow always"
+          ],
+          "enumDescriptions": [
+            "Click 'Allow this time' — single-use approval (recommended, safer).",
+            "Click 'Always allow' — permanent approval (not recommended)."
+          ],
+          "description": "Default button to click when multiple approval options are available."
+        },
+        "antigravityAutoApprove.autoAcceptChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically click 'Accept All' on file changes proposed by the AI agent."
+        },
+        "antigravityAutoApprove.autoApproveTerminalCommands": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow automatic approval for terminal commands that are in the whitelist."
+        },
+        "antigravityAutoApprove.allowAlwaysAllow": {
+          "type": "string",
+          "default": "Never",
+          "enum": [
+            "Never",
+            "Whitelist Only",
+            "Always"
+          ],
+          "enumDescriptions": [
+            "Never use the 'Always allow' permanent option (most safe).",
+            "Allow 'Always allow' only for whitelisted commands.",
+            "Allow 'Always allow' for any approved command."
+          ],
+          "description": "Controls whether the extension is allowed to select the permanent 'Always allow' option."
+        },
+        "antigravityAutoApprove.whitelist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "php artisan",
+            "composer",
+            "npm",
+            "npx",
+            "yarn",
+            "pnpm",
+            "git",
+            "vendor/bin/pint",
+            "node",
+            "python",
+            "pip",
+            "cargo",
+            "go run",
+            "go build",
+            "make",
+            "dotnet",
+            "mvn",
+            "gradle"
+          ],
+          "description": "List of safe command prefixes that will be auto-approved."
+        },
+        "antigravityAutoApprove.blacklist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "rm -rf",
+            "format",
+            "diskpart",
+            "reg delete",
+            "reg add",
+            "powershell",
+            "del /f",
+            "rd /s",
+            "rmdir /s",
+            "mkfs",
+            "dd if=",
+            ":(){ :|:& };:",
+            "chmod 777",
+            "sudo rm",
+            "curl | bash",
+            "wget | bash",
+            "bash <(",
+            "sh <("
+          ],
+          "description": "List of dangerous command patterns that will NEVER be auto-approved."
+        },
+        "antigravityAutoApprove.pollingIntervalMs": {
+          "type": "number",
+          "default": 500,
+          "minimum": 100,
+          "maximum": 5000,
+          "description": "How often (in milliseconds) to check for approval dialogs."
+        },
+        "antigravityAutoApprove.debugLogging": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable verbose debug logging to the output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuperDuperBaim/ext-AutoApproval.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.21.3"
+  }
+}
