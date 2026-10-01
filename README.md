@@ -6,6 +6,26 @@ Automatically clicks *"Allow this time"* when the agent asks permission to run c
 
 ---
 
+## 📦 Quick Installation / Cara Install
+
+### 🇮🇩 Cara Install via VSIX:
+1. **Download file `.vsix`** versi terbaru (misal: `antigravity-safe-auto-approve-0.2.1.vsix`) dari repo ini.
+2. Buka **Antigravity / VS Code**.
+3. Buka menu **Extensions** pada sidebar sebelah kiri (shortcut: `Ctrl + Shift + X`).
+4. Klik ikon **titik tiga (`...`)** di pojok kanan atas panel Extensions.
+5. Pilih opsi **"Install from VSIX..."**.
+6. Pilih file `.vsix` yang telah Anda download. Selesai! 🎉
+
+### 🇬🇧 Installation via VSIX:
+1. **Download the latest `.vsix` file** (e.g., `antigravity-safe-auto-approve-0.2.1.vsix`) from this repo.
+2. Open **Antigravity / VS Code**.
+3. Navigate to the **Extensions** panel on the left sidebar (`Ctrl + Shift + X`).
+4. Click the **more actions menu (`...` three dots)** at the top right of the Extensions panel.
+5. Select **"Install from VSIX..."**.
+6. Choose the downloaded `.vsix` file to install.
+
+---
+
 ## How It Works
 
 ```
