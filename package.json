@@ -3,10 +3,12 @@
   "displayName": "Safe Auto Approve",
   "description": "Safety-first auto approval engine for AI Agent — whitelists safe commands, ignores destructive ones.",
   "version": "0.2.1",
-  "publisher": "AnandaIbrahim",
+  "publisher": "ananda-ibrahim",
   "author": {
-    "name": "Ananda Ibrahim"
+    "name": "Ananda Ibrahim (foolstuck_)",
+    "url": "https://instagram.com/foolstuck_"
   },
+  "icon": "logo.png",
   "engines": {
     "vscode": "^1.85.0"
   },

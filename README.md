@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="Safe Auto Approve Logo" width="128" height="128">
+</p>
+
 # Safe Auto Approve
 
 **Safety-first auto-approval for AI Agent.**
